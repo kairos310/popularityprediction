@@ -3,16 +3,16 @@ import scipy as sp
 import pandas as pd
 import matplotlib.pyplot as plt
 
-df1 = pd.read_csv("webscraping/Billboard Hot 100.csv");
-df2 = pd.read_csv("webscraping/BUTTER.csv");
-df = pd.concat([df1, df2])
 
-
+files = ["webscraping/Billboard Hot 100.csv", "webscraping/BUTTER.csv", "webscraping\Electric Lady Studios.csv", "webscraping\Fresh Finds.csv", "webscraping\Best of the Decade For You.csv"]
+frames = []
+for f in files:
+    frames.append(pd.read_csv(f))
+df = pd.concat(frames)
 
 #normalized
 X_train_initial = df.to_numpy()[:,0:-1]
 
-print(X_train_initial)
 X_train_normed_initial = pd.DataFrame()
 
 for j in range(X_train_initial.shape[1]):
@@ -25,3 +25,5 @@ for j in range(X_train_initial.shape[1]):
     X_train_normed_initial[j] = normed
     
 print(X_train_normed_initial)
+
+
