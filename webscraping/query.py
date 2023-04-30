@@ -21,8 +21,8 @@ features = sp.audio_features(ids)
 featurenames = ['danceability', 'energy', 'loudness', 'speechiness', 'acousticness', 'instrumentalness', 'liveness', 'valence', 'tempo']
 csv = "name, artist, id, danceability, energy, loudness, speechiness, acousticness, instrumentalness, liveness, valence, tempo, popularity" + "\n"
 for i in range(len(features)):
-  csv += str(items[i]['track']['name']) + ","
-  csv += str(items[i]['track']['artists'][0]['name']) + ","
+  csv += '"' + str(items[i]['track']['name']) + '",'
+  csv += '"' + str(items[i]['track']['artists'][0]['name']) + '",'
   csv += str(items[i]['track']['id']) + ","
   for f in featurenames:
     csv += str(features[i][f]) + ","
