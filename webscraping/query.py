@@ -8,7 +8,7 @@ playlist_id = '6UeSakyzhiEt4NB3UAd6NQ' #top 100 today
 
 playlist_id = input("enter playlist id: \n")
 
-results = sp.playlist(playlist_id, fields='name, tracks.items(track(name,id,popularity))', market='US', additional_types=('track',))
+results = sp.playlist(playlist_id, fields='name, tracks.items(track(name,id,popularity,artists(name)))', market='US', additional_types=('track',))
 print(results['name'])
 
 items = results['tracks']['items']
@@ -19,8 +19,11 @@ for i in items:
 features = sp.audio_features(ids)
 
 featurenames = ['danceability', 'energy', 'loudness', 'speechiness', 'acousticness', 'instrumentalness', 'liveness', 'valence', 'tempo']
-csv = "danceability, energy, loudness, speechiness, acousticness, instrumentalness, liveness, valence, tempo, popularity" + "\n"
+csv = "name, artist, id, danceability, energy, loudness, speechiness, acousticness, instrumentalness, liveness, valence, tempo, popularity" + "\n"
 for i in range(len(features)):
+  csv += str(items[i]['track']['name']) + ","
+  csv += str(items[i]['track']['artists'][0]['name']) + ","
+  csv += str(items[i]['track']['id']) + ","
   for f in featurenames:
     csv += str(features[i][f]) + ","
   csv += str(items[i]['track']['popularity'])
