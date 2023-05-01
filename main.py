@@ -7,11 +7,11 @@ import matplotlib.pyplot as plt
 files = ["webscraping/Billboard Hot 100.csv", "webscraping/BUTTER.csv", "webscraping\Electric Lady Studios.csv", "webscraping\Fresh Finds.csv", "webscraping\Best of the Decade For You.csv"]
 frames = []
 for f in files:
-    frames.append(pd.read_csv(f))
+    frames.append(pd.read_csv(f, encoding='cp1252'))
 df = pd.concat(frames)
-
+print(df)
 #normalized
-X_train_initial = df.to_numpy()[:,0:-1]
+X_train_initial = df.to_numpy()[:,1:-1]
 
 X_train_normed_initial = pd.DataFrame()
 
