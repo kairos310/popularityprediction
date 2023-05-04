@@ -43,12 +43,16 @@ function runmodel(e){
         }
     }
     popularity = predict_popularity(inputs)
+    popularity = Math.round(popularity * 10) / 10
     if(popularity > 100){
-        popularity = 100 + " model(" + popularity + ")";
+        popularity = 100 + "% <span class='model'>model(" + popularity + ")</span>";
+        document.getElementById("result").innerHTML = popularity
     }else if(popularity < 0){
-        popularity = 0 + " model(" + popularity + ")"
+        popularity = 0 + "% <span class='model'>model(" + popularity + ")</span>"
+        document.getElementById("result").innerHTML = popularity
+    }else{
+        document.getElementById("result").innerHTML = popularity + "%"
     }
-    document.getElementById("result").innerHTML = "Popularity: " + popularity
 }
 
 

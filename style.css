@@ -1,67 +1,93 @@
-  /* Set background color and font */
-  html{
-    height:100%;
-  }  
-  body {
-      background-color: #f5f5f5;
-      font-family: Arial, sans-serif;
-      height:100%;
-    }
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,400;0,800;1,200&display=swap');
+
+:root{
+  --white: #e8eddfff;
+  --black: #242423ff;
+  --dark: #333533ff;
+  --green: #425d44ff;
+  --accent: #4eb171ff;
+
+}
+
+/* Set background color and font */
+html{
+  height:100%;
+}  
+body {
+  background-color: var(--black);
+  font-family: Nunito Sans, sans-serif;
+  height:100%;
+}
+
+div{
+  font-size: 2em;
+}
+
+div#result{
+  color:var(--white);
+  font-size: 3em;
+  font-weight:700;
+}
+
+span.model{
+  font-size: 0.5em;
+  color: var(--green);
   
-    div{
-      
-    }
-    
-    /* Style the header */
-    header {
-      background-color: #006838;
-      color: #fff;
-      padding: 10px;
-    }
-    
-    /* Style the navigation menu */
-    nav {
-      background-color: #006838;
-      color: #fff;
-      padding: 10px;
-    }
-    
-    /* Style the main content area */
-    main {
-      background-color: #efefef;
-      color: #006838;
-      padding: 10px;
-      margin: 10px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      height:calc(100% - 130px);
-    }
-    
-    /* Style the form elements */
-    form {
-      margin-bottom: 2em;
-    }
-    
-    label {
-      display: inline-block;
-      width: 10em;
-      padding:0.5em;
-    }
-    
-    input[type="range"] {
-      width: 300px;
-    }
-    
-    
-    output {
-      display: inline-block;
-      width: 50px;
-    }
-    
-    /* Style the footer */
-    footer {
-      background-color: #006838;
-      color: #fff;
-      padding: 10px;
-    }
-    
+}
+
+/* Style the header */
+header {
+  background-color: var(--dark);
+  color: #fff;
+  padding: 1em;
+  font-size:1.5em;
+  font-weight:200;
+}
+
+/* Style the navigation menu */
+nav {
+  background-color: var(--dark);
+  color: var(--white);
+  padding: 10px;
+}
+
+/* Style the main content area */
+main {
+  background-color: var(--dark);
+  color: var(--accent);
+  padding: 1.5em;
+  margin: 2em 0em 0em 0em;
+  border-radius: 0.5em;
+}
+
+h1{
+  font-size:3em;
+  color:var(--white);
+}
+
+/* Style the form elements */
+form {
+  margin-bottom: 2em;
+}
+
+label {
+  display: inline-block;
+  width: 10em;
+  padding:0.5em;
+}
+
+input[type="range"] {
+  width: 300px;
+}
+
+output {
+  display: inline-block;
+  width: 50px;
+}
+
+/* Style the footer */
+footer {
+  background-color: var(--dark);
+  color: #fff;
+  padding: 10px;
+}

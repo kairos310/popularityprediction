@@ -15,53 +15,57 @@
 
       <label for="param1">dancebility:</label>
       <input type="range" name="param1" min="0" max="1" step="0.01" value="0.627" oninput="param1Value.value = param1.value">
-      <output name="param1Value" for="param1">0</output>
+      <output name="param1Value" for="param1" >0.627</output>
       <br>
 
       <label for="param2">energy:</label>
       <input type="range" name="param2" min="0" max="1" step="0.01" value="0.585" oninput="param2Value.value = param2.value">
-      <output name="param2Value" for="param2">0</output>
+      <output name="param2Value" for="param2">0.585</output>
       <br>
 
       <label for="param3">loudness:</label>
       <input type="range" name="param3" min="-60" max="0" step="1" value="-7.37" oninput="param3Value.value = param3.value">
-      <output name="param3Value" for="param3">0</output>
+      <output name="param3Value" for="param3">-7.36</output>
       <br>
 
       <label for="param4">speechiness:</label>
       <input type="range" name="param4" min="0" max="1" step="0.01" value="0.0863" oninput="param4Value.value = param4.value">
-      <output name="param4Value" for="param4">0</output>
+      <output name="param4Value" for="param4">0.086</output>
       <br>
 
       <label for="param5">acousticness:</label>
       <input type="range" name="param5" min="0" max="1" step="0.01" value="0.3013" oninput="param5Value.value = param5.value">
-      <output name="param5Value" for="param5">0</output>
+      <output name="param5Value" for="param5">0.301</output>
       <br>
 
       <label for="param6">instrumentalness:</label>
-      <input type="range" name="param6" min="0" max="1" step="0.01" value="0.3013" oninput="param6Value.value = param6.value">
-      <output name="param6Value" for="param6">0</output>
+      <input type="range" name="param6" min="0" max="1" step="0.01" value="0.48" oninput="param6Value.value = param6.value">
+      <output name="param6Value" for="param6">0.481</output>
       <br>
 
       <label for="param7">liveness:</label>
       <input type="range" name="param7" min="0" max="1" step="0.01" value="0.162" oninput="param7Value.value = param7.value">
-      <output name="param7Value" for="param7">0</output>
+      <output name="param7Value" for="param7">0.162</output>
       <br>
 
       <label for="param8">valence:</label>
       <input type="range" name="param8" min="0" max="1" step="0.01" value="0.4635" oninput="param8Value.value = param8.value">
-      <output name="param8Value" for="param8">0</output>
+      <output name="param8Value" for="param8">0.463</output>
       <br>
 
       <label for="param9">tempo:</label>
       <input type="range" name="param9" min="0" max="500" step="1" value="120" oninput="param9Value.value = param9.value">
-      <output name="param9Value" for="param9">0</output>
+      <output name="param9Value" for="param9">120</output>
       <br>
 
     </form>
-    <div id="result">
-    <!-- Result of the ml alg will be displayed here -->
-    </div>
+    <div>
+      Popularity
+      <div id="result">
+      <!-- Result of the ml alg will be displayed here -->
+        89.2%
+      </div>
+  </div>
     </main>
 
     <footer>
