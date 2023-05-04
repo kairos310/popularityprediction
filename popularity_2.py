@@ -80,35 +80,49 @@ X_train, X_test, y_train, y_test = train_test_split(X_normalized, y, test_size=0
 # Train the custom neural network model
 input_size = X_train.shape[1]
 hidden_size = 16
-iterations = 10000
+iterations = 5000
 learning_rate = 0.01
 
 nn_model = NeuralNet(input_size, hidden_size)
 nn_model.train(X_train.values, y_train, iterations, learning_rate)
 
 # K-Nearest Neighbors (KNN) model
-knn_model = KNeighborsRegressor(n_neighbors=5)
-knn_model.fit(X_train, y_train)
+#knn_model = KNeighborsRegressor(n_neighbors=5)
+#knn_model.fit(X_train, y_train)
 
 # Test function to predict popularity using both models
 def predict_popularity(test_features):
-    print("mean {X.mean()} \n std {X.std()} \n ")
     test_features_normalized = (test_features - X.mean()) / X.std()
     nn_prediction = nn_model.forward(test_features_normalized.values)
-    knn_prediction = knn_model.predict(test_features_normalized)
-    return nn_prediction, knn_prediction
+    #knn_prediction = knn_model.predict(test_features_normalized)
+    return nn_prediction #knn_prediction
 
 # Example test cases
-test_features1 = pd.DataFrame([[0.8, 0.7, -5.0, 0.1, 0.1, 0.0, 0.1, 0.5, 120]], columns=X.columns)
-test_features2 = pd.DataFrame([[0.6, 0.5, -7.0, 0.05, 0.2, 0.0, 0.2, 0.6, 100]], columns=X.columns)
+#test_features1 = pd.DataFrame([[0.8, 0.7, -5.0, 0.1, 0.1, 0.0, 0.1, 0.5, 120]], columns=X.columns)
+#test_features2 = pd.DataFrame([[0.6, 0.5, -7.0, 0.05, 0.2, 0.0, 0.2, 0.6, 100]], columns=X.columns)
 
-nn_pred1, knn_pred1 = predict_popularity(test_features1)
-nn_pred2, knn_pred2 = predict_popularity(test_features2)
+#nn_pred1 = predict_popularity(test_features1)
+#nn_pred2= predict_popularity(test_features2)
 
-print(f"Predicted popularity for test case 1 - Neural Network: {nn_pred1}, KNN: {knn_pred1}")
-print(f"Predicted popularity for test case 2 - Neural Network: {nn_pred2}, KNN: {knn_pred2}")
+#print(f"Predicted popularity for test case 1 - Neural Network: {nn_pred1}")
+#print(f"Predicted popularity for test case 2 - Neural Network: {nn_pred2}")
+
+# Get user input for features
+print("Please enter the values for the following features:")
+user_input = []
+for col in X.columns:
+    value = float(input(f"{col}: "))
+    user_input.append(value)
+
+# Create a DataFrame using the user-provided values
+test_features = pd.DataFrame([user_input], columns=X.columns)
+
+# Predict the popularity using the custom neural network model
+nn_prediction = predict_popularity(test_features)
+
+print(f"Predicted popularity for the provided features - Neural Network: {nn_prediction}")
 np.set_printoptions(suppress=True)
 
-print(f"Final W1 {repr(nn_model.W1)} \n W2 {repr(nn_model.W2)} \n b1 {repr(nn_model.b1)} \n b2 {repr(nn_model.b2)} \n mean {repr(X.mean().to_numpy())} \n std {repr(X.std().to_numpy())}")
 
-
+with open("weights.js", "w") as f:
+    f.write(f"var W1 = {nn_model.W1.tolist()} \n var W2 = {nn_model.W2.tolist()} \n var b1 = {nn_model.b1.tolist()} \n var b2 = {nn_model.b2.tolist()} \n var mean = {X.mean().tolist()} \n var std = {X.std().tolist()}")
